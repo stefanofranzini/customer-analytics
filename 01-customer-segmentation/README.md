@@ -17,30 +17,30 @@ Without dimensionality reduction, the high dimensionality of the dataset makes i
 UMAP was applied to reduce the dataset to three dimensions, making it suitable for visualization and clustering while preserving the underlying data structure.
 
 - **Visualization**:  
-  ![Dimensional Reduction Visualization](artifacts/imgs/imgs/dimensional_reduction.png)
+  ![Dimensional Reduction Visualization](artifacts/imgs/dimensional_reduction.png)
 
 ### 3. **Clustering Techniques**
 Several clustering algorithms were evaluated both with and without dimensionality reduction:
 
 #### Without Dimensional Reduction
 - **K-Means Clustering**: Suboptimal clusters with low silhouette scores.  
-  ![K-Means without UMAP](artifacts/imgs/imgs/clustering_KMEANS_noDimensionalReduction.png)
+  ![K-Means without UMAP](artifacts/imgs/clustering_KMEANS_noDimensionalReduction.png)
 
 #### With Dimensional Reduction (UMAP)
 - **K-Means Clustering**: Improved silhouette scores due to reduced dimensions.  
-  ![K-Means with UMAP](artifacts/imgs/imgs/clustering_KMEANS_dimensionalReduction.png)
+  ![K-Means with UMAP](artifacts/imgs/clustering_KMEANS_dimensionalReduction.png)
 - **Agglomerative Clustering**: Explored hierarchical relationships between customers.  
-  ![Hierarchical Clustering](artifacts/imgs/imgs/clustering_hierarchical_dimensionalReduction.png)
+  ![Hierarchical Clustering](artifacts/imgs/clustering_hierarchical_dimensionalReduction.png)
 - **DBSCAN**: Achieved the best silhouette score (**0.70**), highlighting dense clusters of customers.  
-  ![DBSCAN Clustering](artifacts/imgs/imgs/clustering_DBSCAN_dimensionalReduction.png)
+  ![DBSCAN Clustering](artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png)
 - **Gaussian Mixture Models (GMM)**: Identified probabilistic clusters.  
-  ![GMM Clustering](artifacts/imgs/imgs/clustering_gaussian_dimensionalReduction.png)
+  ![GMM Clustering](artifacts/imgs/clustering_gaussian_dimensionalReduction.png)
 
 ### 4. **Imputation of Missing Labels**
 For customers with missing cluster assignments, a **K-Nearest Neighbors (KNN)** classifier was used to impute labels based on their UMAP coordinates.
 
 - **Final Clusters Visualization**:  
-  ![Final Cluster Visualization](artifacts/imgs/imgs/clustering.png)
+  ![Final Cluster Visualization](artifacts/imgs/clustering.png)
 
 ### 5. **Output**
 The final dataset, including customer segments, was saved as `new_retail_customer_clustering.csv` in the `data/processed` directory.
@@ -82,14 +82,14 @@ pip install -r requirements.txt
 ## Visualizations
 
 ### Dimensionality Reduction:
-![Dimensional Reduction Visualization](artifacts/imgs/imgs/dimensional_reduction.png)
+![Dimensional Reduction Visualization](artifacts/imgs/dimensional_reduction.png)
 
 ### Clustering Examples:
 #### DBSCAN Clustering:
-![DBSCAN Clustering](artifacts/imgs/imgs/clustering_DBSCAN_dimensionalReduction.png)
+![DBSCAN Clustering](artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png)
 
 #### Final Cluster Visualization:
-![Final Cluster Visualization](artifacts/imgs/imgs/clustering.png)
+![Final Cluster Visualization](artifacts/imgs/clustering.png)
 
 ---
 
