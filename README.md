@@ -24,10 +24,15 @@ Welcome to my Customer Analytics portfolio! This repository showcases various an
 
 **Techniques:**  
 - K-Means Clustering  
-- Hierarchical Clustering  
+- Hierarchical Clustering
+- DBSCAN Clustering
+- Gaussian Mixtures
+- RFM
 
 **Description:**  
 Projects in this section group customers based on features like demographics, purchase history, and engagement levels. Visualizations such as cluster plots and detailed customer profiles are included.
+
+![Final Cluster Visualization](01-customer-segmentation/artifacts/imgs/clustering.png)
 
 ---
 

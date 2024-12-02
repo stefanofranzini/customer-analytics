@@ -1,4 +1,4 @@
-# README: Customer Clustering for Retail Business
+# Customer Clustering for Retail Business
 
 ## Overview
 This project focuses on clustering the customer base of a retail business based on their characteristics and behaviors. The objective is to uncover meaningful patterns that help in understanding customer segments, which can assist in targeted marketing, personalization, and strategic decision-making.
@@ -97,3 +97,112 @@ pip install -r requirements.txt
 - Incorporate additional customer behavioral metrics.
 - Experiment with advanced dimensionality reduction techniques (e.g., t-SNE).
 - Apply clustering results to real-world marketing strategies.
+
+# RFM Segmentation for Customer Analysis
+
+This repository contains a Python script that performs Recency, Frequency, and Monetary (RFM) analysis on retail transaction data, segments customers based on their RFM scores, and visualizes the results. RFM analysis is commonly used in customer segmentation to understand customer behaviors and target marketing efforts.
+
+## Prerequisites
+
+- Python 3.7+
+- Libraries: `pandas`, `matplotlib`, `seaborn`, `mpl_toolkits`
+  
+Install the necessary libraries using the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Files
+
+- **`new_retail_data.csv`**: Raw retail transaction data used for analysis. It should be placed in the `data/raw/` directory.
+- **`new_retail_customer_clustering.csv`**: Processed customer data with clustering information, expected in the `data/processed/` directory.
+- **Generated visualizations**:
+  - `RFM_distribution.png`: Scatter plot visualizing Recency vs. Monetary, with color based on Frequency.
+  - `Recency.png`: KDE plot showing the distribution of Recency scores.
+  - `Frequency.png`: KDE plot showing the distribution of Frequency scores.
+  - `Monetary.png`: KDE plot showing the distribution of Monetary scores.
+  - `RFM_segments.png`: 3D plot visualizing Recency, Frequency, and Monetary scores, with RFM segmentation.
+
+## Code Overview
+
+### 1. Data Cleaning
+
+The data cleaning process starts by loading the raw retail data from `new_retail_data.csv`. The following steps are applied:
+- The relevant columns (`Transaction_ID`, `Customer_ID`, `Date`, and `Total_Amount`) are selected.
+- Rows with missing values are dropped.
+- The `Transaction_ID` and `Customer_ID` columns are converted to integers.
+- The `Date` column is standardized to the `YYYY/MM/DD` format.
+
+### 2. RFM Computation
+
+RFM (Recency, Frequency, Monetary) metrics are calculated as follows:
+- **Recency**: The number of days since the customer's most recent purchase.
+- **Frequency**: The total number of transactions a customer has made.
+- **Monetary**: The average spend of the customer.
+
+These metrics are calculated by grouping the data by `Customer_ID`, and new columns for `Recency`, `Frequency`, and `Monetary` are created.
+
+### 3. RFM Scoring and Segmentation
+
+- **Recency**, **Frequency**, and **Monetary** scores are each assigned based on quartiles, giving each customer a score between 1 and 4.
+- The total **RFM_Score** is calculated by combining these individual scores:  
+  `RFM_Score = Recency_Score * 100 + Frequency_Score * 10 + Monetary_Score`
+- Customers are segmented into the following categories based on their RFM scores:
+  - **Champion**: High Recency, Frequency, and Monetary.
+  - **Promising**: High Recency.
+  - **Loyal**: High Frequency.
+  - **Big Spender**: High Monetary.
+  - **At Risk**: Low Recency but potentially high Frequency or Monetary.
+  - **Lost**: Low Recency, Frequency, and Monetary.
+
+### 4. Data Visualization
+
+The script generates several plots to visualize the RFM segmentation:
+
+#### 1. Scatter Plot: RFM Distribution  
+A scatter plot showing Recency vs. Monetary, with points colored by Frequency.  
+![RFM Distribution](artifacts/RFM_distribution.png)
+
+#### 2. KDE Plots for Recency, Frequency, and Monetary  
+These density plots show the distribution of each RFM metric with quartile markers:  
+- **Recency Distribution**  
+  ![Recency Distribution](artifacts/Recency.png)
+  
+- **Frequency Distribution**  
+  ![Frequency Distribution](artifacts/Frequency.png)
+
+- **Monetary Distribution**  
+  ![Monetary Distribution](artifacts/Monetary.png)
+
+#### 3. 3D Scatter Plot: RFM Segments  
+A 3D scatter plot visualizing Recency, Frequency, and Monetary, color-coded by customer segments.  
+![RFM Segments](artifacts/RFM_segments.png)
+
+### 5. RFM Segmentation Function
+
+The `RFM_segmentation()` function assigns customers to different segments based on their RFM scores. The logic is as follows:
+- **High Recency**: Customers who bought recently and are categorized into "Champion", "Loyal", "Big Spender", or "Promising".
+- **Low Recency**: Customers who haven't purchased recently but may still be "At Risk" or "Lost", depending on their Frequency and Monetary scores.
+
+### 6. Final Visualization with Clustering (Optional)
+
+The script merges the RFM segmented customer data with clustering results (`UMAP1`, `UMAP2`, `UMAP3`), then creates a 3D scatter plot to visualize customer segments in a reduced-dimensional space. This visualization is generated using the clustering data from the `new_retail_customer_clustering.csv` file.
+
+#### Clustering Visualization  
+A 3D scatter plot visualizing RFM segments in reduced-dimensional space after clustering.  
+![Clustering Visualization](artifacts/RFM_segments.png) *(same plot reused for demonstration)*
+
+## How to Run
+
+1. Prepare the dataset by placing `new_retail_data.csv` in the `data/raw/` directory and `new_retail_customer_clustering.csv` in the `data/processed/` directory.
+2. Run the Python script to perform RFM segmentation and generate the visualizations:
+
+```bash
+python src/RFM.py
+```
+
+3. The generated visualizations will be saved in the artifacts/ directory. These include plots for the RFM distribution, Recency, Frequency, and Monetary distributions, as well as the segmented 3D visualization.
+
+## Conclusion
+RFM segmentation is a powerful technique for understanding customer behavior. By categorizing customers based on their recency, frequency, and monetary value, businesses can tailor their marketing and retention strategies to different customer segments. The visualizations generated through this analysis provide valuable insights for data-driven decision-making. This version breaks down each section into clear, concise explanations, and it provides step-by-step instructions to understand and use the code.
