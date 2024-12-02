@@ -17,30 +17,30 @@ Without dimensionality reduction, the high dimensionality of the dataset makes i
 UMAP was applied to reduce the dataset to three dimensions, making it suitable for visualization and clustering while preserving the underlying data structure.
 
 - **Visualization**:  
-  ![Dimensional Reduction Visualization](artifacts/imgs/dimensional_reduction.png)
+  ![Dimensional Reduction Visualization](artifacts/imgs/imgs/dimensional_reduction.png)
 
 ### 3. **Clustering Techniques**
 Several clustering algorithms were evaluated both with and without dimensionality reduction:
 
 #### Without Dimensional Reduction
 - **K-Means Clustering**: Suboptimal clusters with low silhouette scores.  
-  ![K-Means without UMAP](artifacts/imgs/clustering_KMEANS_noDimensionalReduction.png)
+  ![K-Means without UMAP](artifacts/imgs/imgs/clustering_KMEANS_noDimensionalReduction.png)
 
 #### With Dimensional Reduction (UMAP)
 - **K-Means Clustering**: Improved silhouette scores due to reduced dimensions.  
-  ![K-Means with UMAP](artifacts/imgs/clustering_KMEANS_dimensionalReduction.png)
+  ![K-Means with UMAP](artifacts/imgs/imgs/clustering_KMEANS_dimensionalReduction.png)
 - **Agglomerative Clustering**: Explored hierarchical relationships between customers.  
-  ![Hierarchical Clustering](artifacts/imgs/clustering_hierarchical_dimensionalReduction.png)
+  ![Hierarchical Clustering](artifacts/imgs/imgs/clustering_hierarchical_dimensionalReduction.png)
 - **DBSCAN**: Achieved the best silhouette score (**0.70**), highlighting dense clusters of customers.  
-  ![DBSCAN Clustering](artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png)
+  ![DBSCAN Clustering](artifacts/imgs/imgs/clustering_DBSCAN_dimensionalReduction.png)
 - **Gaussian Mixture Models (GMM)**: Identified probabilistic clusters.  
-  ![GMM Clustering](artifacts/imgs/clustering_gaussian_dimensionalReduction.png)
+  ![GMM Clustering](artifacts/imgs/imgs/clustering_gaussian_dimensionalReduction.png)
 
 ### 4. **Imputation of Missing Labels**
 For customers with missing cluster assignments, a **K-Nearest Neighbors (KNN)** classifier was used to impute labels based on their UMAP coordinates.
 
 - **Final Clusters Visualization**:  
-  ![Final Cluster Visualization](artifacts/imgs/clustering.png)
+  ![Final Cluster Visualization](artifacts/imgs/imgs/clustering.png)
 
 ### 5. **Output**
 The final dataset, including customer segments, was saved as `new_retail_customer_clustering.csv` in the `data/processed` directory.
@@ -76,20 +76,20 @@ pip install -r requirements.txt
    Run the following Python script to perform clustering:  ```src/clustering.py```
   
 3. **Analyze Results**: Review the generated cluster visualizations and output file:
-    - Cluster visualizations are saved in the ```artifacts/imgs directory```.
+    - Cluster visualizations are saved in the ```artifacts/imgs/imgs directory```.
     - Final dataset with clusters is saved as ```data/processed/new_retail_customer_clustering.csv```.
 
 ## Visualizations
 
 ### Dimensionality Reduction:
-![Dimensional Reduction Visualization](artifacts/imgs/dimensional_reduction.png)
+![Dimensional Reduction Visualization](artifacts/imgs/imgs/dimensional_reduction.png)
 
 ### Clustering Examples:
 #### DBSCAN Clustering:
-![DBSCAN Clustering](artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png)
+![DBSCAN Clustering](artifacts/imgs/imgs/clustering_DBSCAN_dimensionalReduction.png)
 
 #### Final Cluster Visualization:
-![Final Cluster Visualization](artifacts/imgs/clustering.png)
+![Final Cluster Visualization](artifacts/imgs/imgs/clustering.png)
 
 ---
 
@@ -100,7 +100,7 @@ pip install -r requirements.txt
 
 # RFM Segmentation for Customer Analysis
 
-This repository contains a Python script that performs Recency, Frequency, and Monetary (RFM) analysis on retail transaction data, segments customers based on their RFM scores, and visualizes the results. RFM analysis is commonly used in customer segmentation to understand customer behaviors and target marketing efforts.
+This project contains a Python script that performs Recency, Frequency, and Monetary (RFM) analysis on retail transaction data, segments customers based on their RFM scores, and visualizes the results. RFM analysis is commonly used in customer segmentation to understand customer behaviors and target marketing efforts.
 
 ## Prerequisites
 
@@ -162,22 +162,22 @@ The script generates several plots to visualize the RFM segmentation:
 
 #### 1. Scatter Plot: RFM Distribution  
 A scatter plot showing Recency vs. Monetary, with points colored by Frequency.  
-![RFM Distribution](artifacts/RFM_distribution.png)
+![RFM Distribution](artifacts/imgs/RFM_distribution.png)
 
 #### 2. KDE Plots for Recency, Frequency, and Monetary  
 These density plots show the distribution of each RFM metric with quartile markers:  
 - **Recency Distribution**  
-  ![Recency Distribution](artifacts/Recency.png)
+  ![Recency Distribution](artifacts/imgs/Recency.png)
   
 - **Frequency Distribution**  
-  ![Frequency Distribution](artifacts/Frequency.png)
+  ![Frequency Distribution](artifacts/imgs/Frequency.png)
 
 - **Monetary Distribution**  
-  ![Monetary Distribution](artifacts/Monetary.png)
+  ![Monetary Distribution](artifacts/imgs/Monetary.png)
 
 #### 3. 3D Scatter Plot: RFM Segments  
 A 3D scatter plot visualizing Recency, Frequency, and Monetary, color-coded by customer segments.  
-![RFM Segments](artifacts/RFM_segments.png)
+![RFM Segments](artifacts/imgs/RFM_segments.png)
 
 ### 5. RFM Segmentation Function
 
@@ -191,7 +191,7 @@ The script merges the RFM segmented customer data with clustering results (`UMAP
 
 #### Clustering Visualization  
 A 3D scatter plot visualizing RFM segments in reduced-dimensional space after clustering.  
-![Clustering Visualization](artifacts/RFM_segments.png) *(same plot reused for demonstration)*
+![Clustering Visualization](artifacts/imgs/RFM_segments.png) *(same plot reused for demonstration)*
 
 ## How to Run
 
@@ -202,7 +202,7 @@ A 3D scatter plot visualizing RFM segments in reduced-dimensional space after cl
 python src/RFM.py
 ```
 
-3. The generated visualizations will be saved in the artifacts/ directory. These include plots for the RFM distribution, Recency, Frequency, and Monetary distributions, as well as the segmented 3D visualization.
+3. The generated visualizations will be saved in the artifacts/imgs/ directory. These include plots for the RFM distribution, Recency, Frequency, and Monetary distributions, as well as the segmented 3D visualization.
 
 ## Conclusion
 RFM segmentation is a powerful technique for understanding customer behavior. By categorizing customers based on their recency, frequency, and monetary value, businesses can tailor their marketing and retention strategies to different customer segments. The visualizations generated through this analysis provide valuable insights for data-driven decision-making. This version breaks down each section into clear, concise explanations, and it provides step-by-step instructions to understand and use the code.

@@ -82,7 +82,7 @@ handles, labels = plt.gca().get_legend_handles_labels()
 new_handles_labels = [(h, l) for h, l in zip(handles, labels) if l != "5"]
 plt.legend(*zip(*new_handles_labels), title="Frequency")
 
-plt.savefig('artifacts/RFM_distribution.png')
+plt.savefig('artifacts/imgs/RFM_distribution.png')
 plt.show()
 
 
@@ -102,7 +102,7 @@ plt.title('Recency Distribution', fontsize=14)
 plt.xlabel('Recency', fontsize=12)
 plt.ylabel('Density', fontsize=12)
 
-plt.savefig('artifacts/Recency.png')
+plt.savefig('artifacts/imgs/Recency.png')
 plt.show()
 
 
@@ -123,7 +123,7 @@ plt.title('Frequency Distribution', fontsize=14)
 plt.xlabel('Frequency', fontsize=12)
 plt.ylabel('Density', fontsize=12)
 
-plt.savefig('artifacts/Frequency.png')
+plt.savefig('artifacts/imgs/Frequency.png')
 plt.show()
 
 
@@ -144,7 +144,7 @@ plt.title('Monetary Distribution', fontsize=14)
 plt.xlabel('Monetary', fontsize=12)
 plt.ylabel('Density', fontsize=12)
 
-plt.savefig('artifacts/Monetary.png')
+plt.savefig('artifacts/imgs/Monetary.png')
 plt.show()
 
 
@@ -220,7 +220,7 @@ ax.legend(handles=handles, title="RFM Segments")
 
 # Show the plot
 
-plt.savefig('artifacts/RFM_segments.png')
+plt.savefig('artifacts/imgs/RFM_segments.png')
 
 plt.show()
 
