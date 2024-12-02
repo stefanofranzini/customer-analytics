@@ -7,8 +7,8 @@ Welcome to my Customer Analytics portfolio! This repository showcases various an
 ## Table of Contents
 
 1. [Customer Segmentation](#customer-segmentation)
-2. [Customer Lifetime Value (CLV)](#customer-lifetime-value-clv)
-3. [Customer Churn Prediction](#customer-churn-prediction)
+2. [Customer Churn Prediction](#customer-churn-prediction)
+3. [Customer Lifetime Value (CLV)](#customer-lifetime-value-clv)
 4. [Recommendation Systems](#recommendation-systems)
 5. [Sentiment Analysis and Text Mining](#sentiment-analysis-and-text-mining)
 6. [Marketing Analytics](#marketing-analytics)
@@ -32,8 +32,22 @@ Welcome to my Customer Analytics portfolio! This repository showcases various an
 **Description:**  
 Projects in this section group customers based on features like demographics, purchase history, and engagement levels. Visualizations such as cluster plots and detailed customer profiles are included.
 
+Download the necessary dataset from kaggle at [retail analysis large dataset](https://www.kaggle.com/datasets/sahilprajapati143/retail-analysis-large-dataset).
+
 ![Final Cluster Visualization](01-customer-segmentation/artifacts/imgs/clustering.png)
 ![Clustering Visualization](01-customer-segmentation/artifacts/imgs/RFM_segments.png)
+
+---
+
+## Customer Churn Prediction
+
+**Techniques:**  
+- Logistic Regression  
+- Decision Trees, Random Forests, Gradient Boosting (e.g., XGBoost, LightGBM)  
+- Neural Networks  
+
+**Description:**  
+This section includes models identifying customers likely to leave, helping businesses implement proactive retention strategies. Tools like SHAP and LIME are used for interpretability.
 
 ---
 
@@ -47,18 +61,6 @@ Projects in this section group customers based on features like demographics, pu
 
 **Description:**  
 These projects predict the long-term value of customers and help prioritize customer retention strategies.
-
----
-
-## Customer Churn Prediction
-
-**Techniques:**  
-- Logistic Regression  
-- Decision Trees, Random Forests, Gradient Boosting (e.g., XGBoost, LightGBM)  
-- Neural Networks  
-
-**Description:**  
-This section includes models identifying customers likely to leave, helping businesses implement proactive retention strategies. Tools like SHAP and LIME are used for interpretability.
 
 ---
 

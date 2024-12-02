@@ -70,6 +70,8 @@ pip install -r requirements.txt
 
 ## Usage
 
+0. **Download Data**: Download the necessary dataset from kaggle at [retail analysis large dataset](https://www.kaggle.com/datasets/sahilprajapati143/retail-analysis-large-dataset).
+
 1. **Preprocess Data**: Load your retail dataset and follow the cleaning and transformation steps.
 
 2. **Run the Script**:
@@ -195,6 +197,7 @@ A 3D scatter plot visualizing RFM segments in reduced-dimensional space after cl
 
 ## How to Run
 
+0. Download the necessary dataset from kaggle at [retail analysis large dataset](https://www.kaggle.com/datasets/sahilprajapati143/retail-analysis-large-dataset).
 1. Prepare the dataset by placing `new_retail_data.csv` in the `data/raw/` directory and `new_retail_customer_clustering.csv` in the `data/processed/` directory.
 2. Run the Python script to perform RFM segmentation and generate the visualizations:
 
