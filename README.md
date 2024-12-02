@@ -20,7 +20,7 @@ Welcome to my Customer Analytics portfolio! This repository showcases various an
 
 ---
 
-## Customer Segmentation
+## [Customer Segmentation](01-customer-segmentation/)
 
 **Techniques:**  
 - K-Means Clustering  
