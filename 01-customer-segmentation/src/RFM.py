@@ -169,9 +169,9 @@ def RFM_segmentation(row):
     if row['Recency_Score'] > 2:
         if row['Frequency_Score'] > 2 and row['Monetary_Score'] > 2:
             return "Champion"
-        elif row['Frequency_Score'] > 2 and row['Monetary_Score'] < 2:
+        elif row['Frequency_Score'] > 2 and row['Monetary_Score'] <= 2:
             return "Loyal"
-        elif row['Frequency_Score'] < 2 and row['Monetary_Score'] > 2:
+        elif row['Frequency_Score'] <= 2 and row['Monetary_Score'] > 2:
             return "Big Spender"
         else:
             return "Promising"
@@ -180,7 +180,6 @@ def RFM_segmentation(row):
             return 'At Risk'
         else:
             return 'Lost'
-
 
 df_customer['RFM_label'] = df_customer.apply(RFM_segmentation,axis=1)
 
