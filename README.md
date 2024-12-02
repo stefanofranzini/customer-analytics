@@ -33,7 +33,7 @@ Welcome to my Customer Analytics portfolio! This repository showcases various an
 Projects in this section group customers based on features like demographics, purchase history, and engagement levels. Visualizations such as cluster plots and detailed customer profiles are included.
 
 ![Final Cluster Visualization](01-customer-segmentation/artifacts/imgs/clustering.png)
-![Clustering Visualization](01-customer-segmentation/artifacts/imgs/artifacts/RFM_segments.png)
+![Clustering Visualization](01-customer-segmentation/artifacts/imgs/RFM_segments.png)
 
 ---
 
