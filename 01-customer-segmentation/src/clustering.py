@@ -337,66 +337,57 @@ plt.ylabel('UMAP2')
 plt.show()
 
 # ---
-# CUSTOMER SEGMENT
-# ---
+# CHOOSE BEST MODEL
+df_sampled['Cluster'] = df_sampled['Hierarchical_Cluster_UMAP']
 
-df_sampled = df_sampled.merge(df[['Customer_ID', 'Customer_Segment']].drop_duplicates(subset=['Customer_ID']), on='Customer_ID', how='left')
+# ---
+# CUSTOMER SEGMENT
+df_sampled = df_sampled.merge(
+    df[['Customer_ID', 'Customer_Segment']].drop_duplicates(subset=['Customer_ID']),
+    on='Customer_ID',
+    how='left'
+)
 
 to_replace = {'Regular': 2, 'Premium': 3, 'New': 1}
-df_sampled['Customer_Segment_encoded'] = df_sampled['Customer_Segment'].map(to_replace)
-df_sampled['Customer_Segment_encoded'] = df_sampled['Customer_Segment_encoded'].fillna(0)
+df_sampled['Customer_Segment_encoded'] = df_sampled['Customer_Segment'].map(to_replace).fillna(0)
 
-# 3D Scatter Plot for Customer Segment
+# ---
+# 3D Scatter Plot: Customer Segments
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection='3d')
-x, y, z = df_sampled['UMAP1'], df_sampled['UMAP2'], df_sampled['UMAP3']
+
+x = df_sampled['UMAP1']
+y = df_sampled['UMAP2']
+z = df_sampled['UMAP3']
 labels = df_sampled['Customer_Segment_encoded']
+
 scatter = ax.scatter(x, y, z, c=labels, cmap='tab20', s=20, alpha=0.8)
+
 ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
+
 plt.savefig('artifacts/imgs/clustering_customerSegments.png')
 plt.show()
 
 # ---
-# SAVE OUTPUTS
-# ---
-
-df_customer = df_clean[customer_columns].drop_duplicates(subset='Customer_ID')
-df_transaction = df_clean[transaction_columns]
-df_transaction = pd.get_dummies(df_transaction, columns=['Product_Category', 'Product_Brand', 'Product_Type', 'Shipping_Method', 'Payment_Method'], drop_first=False, dtype=int)
-
-df_aggregated_ = df_transaction.groupby('Customer_ID').agg(agg_dict).reset_index()
-df_aggregated_ = df_aggregated_.merge(df_customer, on='Customer_ID')
-
-df_sampled['Cluster'] = df_sampled['Hierarchical_Cluster_UMAP']
-df_aggregated_ = df_aggregated_.merge(df_sampled[['Customer_ID', 'Cluster', 'UMAP1', 'UMAP2', 'UMAP3']], on='Customer_ID')
-
-df_aggregated_.to_csv('data/processed/new_retail_customer_clustering.csv', index=False)
-
-# ---
-# Explain Clusters
-# ---
-
+# EXPLAIN CLUSTERS
 df_sampled_ = df_sampled[feature_columns + ['Cluster']]
 X = df_sampled_.drop(['Customer_ID', 'Cluster'], axis=1)
-y = df_sampled
+y = df_sampled_['Cluster'].astype(str)
 
-# --- 
-# LGBM Classifier Training
 clf_km = lgb.LGBMClassifier(colsample_by_tree=0.8)
 clf_km.fit(X=X, y=y)
 
-# --- 
-# SHAP values
+# ---
+# SHAP Values
 explainer_km = shap.TreeExplainer(clf_km)
 shap_values_km = explainer_km(X)
 
-# --- 
-# Plot SHAP values
 class_names = clf_km.classes_
-fig, axes = plt.subplots(4, 3, figsize=(15, 20))
+
+fig, axes = plt.subplots(5, 3, figsize=(15, 20))
 axes = axes.flatten()
 
 for k, ax in enumerate(axes):
@@ -409,29 +400,31 @@ for k, ax in enumerate(axes):
         ax.axis('off')
 
 plt.tight_layout()
+plt.savefig('artifacts/imgs/shap.png', bbox_inches='tight')
 plt.show()
 
-# --- 
-# Cluster Names Mapping
+# ---
+# CLUSTER NAMES MAPPING
 cluster_names = {
-    '0': 'English Customers',
-    '1': 'Mitsubhisi Lovers',
+    '5': 'English Customers',
+    '6': 'Mitsubhisi Lovers',
     '2': 'Berliners Customers',
-    '3': 'New Mexican Customers',
+    '7': 'New Mexican Customers',
     '4': 'Ontario Customers',
-    '5': 'Whirlpool Lovers',
-    '6': 'Bluestar Lovers',
-    '7': 'Kansas Customers',
-    '8': 'Maine Customers',
-    '9': 'Connetticut Customers',
-    '10': 'New South Wales Customers',
-    '11': 'Georgia Customers',
+    '3': 'Whirepool Lovers',
+    '0': 'Bluestar Lovers',
+    '12': 'Kansas Customers',
+    '11': 'Maine Customers',
+    '1': 'Connetticut Customers',
+    '8': 'New South Wales Customers',
+    '9': 'Ontario Mitsubhisi Lovers',
+    '10': 'Georgia Customers',
 }
 
 df_sampled['Cluster_Name'] = df_sampled['Cluster'].astype(str).replace(cluster_names)
 
-# --- 
-# 3D Scatter Plot with Cluster Names
+# ---
+# 3D Scatter Plot: Clusters with Custom Colors
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection='3d')
 
@@ -439,41 +432,40 @@ x = df_sampled['UMAP1']
 y = df_sampled['UMAP2']
 z = df_sampled['UMAP3']
 labels = df_sampled['Cluster']
-cluster_names = df_sampled['Cluster_Name'].unique()
+cluster_names_unique = df_sampled['Cluster_Name'].unique()
 
-scatter = ax.scatter(x, y, z, c=labels, cmap='tab20', s=5, alpha=0.5)
+cmap = plt.cm.tab20
+handles = []
+
+for i, cluster_name in enumerate(cluster_names_unique):
+    cluster_data = df_sampled[df_sampled['Cluster_Name'] == cluster_name]
+    color = cmap(i / len(cluster_names_unique))
+    ax.scatter(cluster_data['UMAP1'], cluster_data['UMAP2'], cluster_data['UMAP3'], c=[color], label=cluster_name, s=5, alpha=0.5)
+    handles.append(plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, markersize=10, label=cluster_name))
+
 ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
+ax.legend(handles=handles, title="Cluster Names", bbox_to_anchor=(1.05, 1), loc='upper left')
 
-for i, cluster_name in enumerate(cluster_names):
-    ax.scatter([], [], [], c=[plt.cm.tab20((i+1)/len(cluster_names))], label=cluster_name, s=50)
-
-ax.legend(title="Cluster Names", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.savefig('artifacts/imgs/clustering_customerSegments.png', bbox_inches='tight')
+plt.savefig('artifacts/imgs/clustering.png', bbox_inches='tight')
 plt.show()
 
-# --- 
-# 3D Scatter Plot with Cluster Names (Alternate Color Mapping)
-fig = plt.figure(figsize=(10, 7))
-ax = fig.add_subplot(111, projection='3d')
+# ---
+# SAVE OUTPUT
+df_customer = df_clean[customer_columns].drop_duplicates(subset='Customer_ID')
+df_transaction = df_clean[transaction_columns]
 
-x = df_sampled['UMAP1']
-y = df_sampled['UMAP2']
-z = df_sampled['UMAP3']
-labels = df_sampled['Cluster']
-cluster_names = df_sampled['Cluster_Name'].unique()
+df_transaction = pd.get_dummies(
+    df_transaction,
+    columns=['Product_Category', 'Product_Brand', 'Product_Type', 'Shipping_Method', 'Payment_Method'],
+    drop_first=False,
+    dtype=int
+)
 
-scatter = ax.scatter(x, y, z, c=labels, cmap='tab20', s=5, alpha=0.5)
-ax.set_title('3D Scatter Plot of Clusters')
-ax.set_xlabel('UMAP1')
-ax.set_ylabel('UMAP2')
-ax.set_zlabel('UMAP3')
+df_aggregated_ = df_transaction.groupby('Customer_ID').agg(agg_dict).reset_index()
+df_aggregated_ = df_aggregated_.merge(df_customer, on='Customer_ID')
 
-for i, cluster_name in enumerate(cluster_names):
-    ax.scatter([], [], [], c=[plt.cm.tab20(i/len(cluster_names))], label=cluster_name, s=50)
-
-ax.legend(title="Cluster Names", bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.savefig('artifacts/imgs/clustering_customerSegments.png', bbox_inches='tight')
-plt.show()
+df_sampled_ = df_sampled[['Customer_ID', 'Cluster', 'UMAP1', 'UMAP2', 'UMAP3']].merge(df_aggregated_, on='Customer_ID', how='left')
+df_aggregated_.to_csv('data/processed/new_retail_customer_clustering.csv', index=False)
