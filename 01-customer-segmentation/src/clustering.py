@@ -88,7 +88,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/dimensional_reduction.png')
+plt.savefig('artifacts/imgs/dimensional_reduction.png', transparent=True,)
 plt.show()
 
 # Remove Density Outliers
@@ -118,7 +118,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/dimensional_reduction.png')
+plt.savefig('artifacts/imgs/dimensional_reduction.png', transparent=True,)
 plt.show()
 
 # --- CLUSTERING (no dimensional reduction) ---
@@ -156,7 +156,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/clustering_KMEANS_noDimensionalReduction.png')
+plt.savefig('artifacts/imgs/clustering_KMEANS_noDimensionalReduction.png', transparent=True,)
 plt.show()
 
 plt.figure(figsize=(8, 6))
@@ -201,7 +201,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/clustering_KMEANS_withDimensionalReduction.png')
+plt.savefig('artifacts/imgs/clustering_KMEANS_dimensionalReduction.png', transparent=True,)
 plt.show()
 
 # ---
@@ -237,7 +237,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/clustering_hierarchical_dimensionalReduction.png')
+plt.savefig('artifacts/imgs/clustering_hierarchical_dimensionalReduction.png', transparent=True,)
 plt.show()
 
 # 2D Scatter Plot for Hierarchical Clustering
@@ -281,7 +281,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png')
+plt.savefig('artifacts/imgs/clustering_DBSCAN_dimensionalReduction.png', transparent=True,)
 plt.show()
 
 # 2D Scatter Plot for DBSCAN
@@ -325,7 +325,7 @@ ax.set_title('3D Scatter Plot of Clusters')
 ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
-plt.savefig('artifacts/imgs/clustering_gaussian_dimensionalReduction.png')
+plt.savefig('artifacts/imgs/clustering_gaussian_dimensionalReduction.png', transparent=True,)
 plt.show()
 
 # 2D Scatter Plot for Gaussian Mixtures
@@ -368,7 +368,7 @@ ax.set_xlabel('UMAP1')
 ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
 
-plt.savefig('artifacts/imgs/clustering_customerSegments.png')
+plt.savefig('artifacts/imgs/clustering_customerSegments.png', transparent=True,)
 plt.show()
 
 # ---
@@ -400,7 +400,7 @@ for k, ax in enumerate(axes):
         ax.axis('off')
 
 plt.tight_layout()
-plt.savefig('artifacts/imgs/shap.png', bbox_inches='tight')
+plt.savefig('artifacts/imgs/shap.png', transparent=True, bbox_inches='tight')
 plt.show()
 
 # ---
@@ -449,7 +449,7 @@ ax.set_ylabel('UMAP2')
 ax.set_zlabel('UMAP3')
 ax.legend(handles=handles, title="Cluster Names", bbox_to_anchor=(1.05, 1), loc='upper left')
 
-plt.savefig('artifacts/imgs/clustering.png', bbox_inches='tight')
+plt.savefig('artifacts/imgs/clustering.png', transparent=True, bbox_inches='tight')
 plt.show()
 
 # ---
