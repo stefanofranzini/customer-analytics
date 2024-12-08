@@ -1,7 +1,8 @@
-pandas 
-numpy 
-matplotlib 
-scikit-learn 
-umap-learn
-lightgbm
-shap
+pandas==2.2.2 
+numpy==1.26.4
+matplotlib==3.9.2
+scikit-learn==1.5.2
+scipy==1.14.1 
+umap-learn==0.5.7
+lightgbm==4.5.0
+shap==0.46.0

@@ -49,6 +49,7 @@ Download the necessary dataset from kaggle at [retail analysis large dataset](ht
 **Description:**  
 This section includes models identifying customers likely to leave, helping businesses implement proactive retention strategies. Tools like SHAP and LIME are used for interpretability.
 
+Download the necessary dataset from kaggle at [telco customer churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
 ---
 
 ## Customer Lifetime Value (CLV)
