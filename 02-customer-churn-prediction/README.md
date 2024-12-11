@@ -8,7 +8,7 @@ In this project, we explore customer churn for a telecommunications company, usi
 
 ---
 
-## Clustering: Discovering the Five Customer Groups
+## Clustering: Five Customer Groups
 
 We applied dimensionality reduction (UMAP) and hierarchical clustering to group customers into five clusters. Each cluster represents a distinct customer archetype, including "Senior High Spenders" and "Mail Check Payers." 
 
@@ -54,7 +54,7 @@ Senior customers display significantly higher churn rates than young people:
 
 ---
 
-## Model Comparison: When Simplicity Triumphs
+## Model Comparison: Keep it Simple, Stupid
 
 Three machine learning models were evaluated for churn prediction:
 
