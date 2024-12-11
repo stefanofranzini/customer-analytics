@@ -39,17 +39,21 @@ Download the necessary dataset from kaggle at [retail analysis large dataset](ht
 
 ---
 
-## Customer Churn Prediction
+## [Customer Churn Prediction](02-customer-churn-prediction)
 
 **Techniques:**  
-- Logistic Regression  
-- Decision Trees, Random Forests, Gradient Boosting (e.g., XGBoost, LightGBM)  
-- Neural Networks  
+- Logistic Regression
+- Random Forests, Gradient Boosting (e.g., XGBoost, LightGBM)  
+- Clustering and Churn Curves
 
 **Description:**  
 This section includes models identifying customers likely to leave, helping businesses implement proactive retention strategies. Tools like SHAP and LIME are used for interpretability.
 
 Download the necessary dataset from kaggle at [telco customer churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+
+![Churn Curves for Internet Service](02-customer-churn-prediction/artifacts/imgs/churn_curve_internet.png)
+![Churn Probability by Cluster](02-customer-churn-prediction/artifacts/imgs/cluster_churn_probabilities.png)
+
 ---
 
 ## Customer Lifetime Value (CLV)
