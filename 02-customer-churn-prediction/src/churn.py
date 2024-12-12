@@ -33,6 +33,14 @@ df.isna().sum()
 
 
 # ---
+#
+# ### CLEAN
+
+df['TotalCharges'] = df['TotalCharges'].replace({' ':'0'})
+df['TotalCharges'] = df['TotalCharges'].astype(float)/df['tenure']
+df = df.fillna(0.)
+
+# ---
 # 
 # ### DUMMIFY
 

@@ -66,51 +66,51 @@ Here are their performance overviews:
 
 #### logistic regression
 ```python
-                precision    recall  f1-score   support
+              precision    recall  f1-score   support
 
            0       0.86      0.90      0.88      1036
-           1       0.68      0.58      0.63       373
+           1       0.68      0.59      0.63       373
 
     accuracy                           0.82      1409
-   macro avg       0.77      0.74      0.75      1409
+   macro avg       0.77      0.74      0.76      1409
 weighted avg       0.81      0.82      0.81      1409
 
-AUC-ROC: 0.8606376867100728
+AUC-ROC: 0.860653213535251
 ```
 
 #### XGBoost (fine-tuned)
 ```python
               precision    recall  f1-score   support
 
-           0       0.84      0.91      0.88      1036
-           1       0.69      0.53      0.60       373
+           0       0.85      0.91      0.88      1036
+           1       0.69      0.54      0.60       373
 
     accuracy                           0.81      1409
-   macro avg       0.76      0.72      0.74      1409
-weighted avg       0.80      0.81      0.80      1409
+   macro avg       0.77      0.73      0.74      1409
+weighted avg       0.80      0.81      0.81      1409
 
-AUC-ROC: 0.8622033082488846
+AUC-ROC: 0.8632707774798927
 ```
 
 #### Random Forest (fine-tuned)
 ```python
               precision    recall  f1-score   support
 
-           0       0.83      0.92      0.88      1036
-           1       0.70      0.49      0.58       373
+           0       0.83      0.93      0.88      1036
+           1       0.70      0.48      0.57       373
 
     accuracy                           0.81      1409
-   macro avg       0.77      0.71      0.73      1409
+   macro avg       0.77      0.70      0.72      1409
 weighted avg       0.80      0.81      0.80      1409
 
-AUC-ROC: 0.8658999865434182
+AUC-ROC: 0.8651779891726272
 ```
 
 While fine-tuned XGBoost and Random Forest perform slightly better on the AUC-ROC metric, f1-scores show that logistic regression have a better performance overall. In particular, in a churn model it is important to have high recall for the churn class: if I miss some at-risk customers and they end up churning because I did not perform a caring action on them, I could lose a lot of value.
 
-In conclusion, despite the advanced techniques and hyperparameter tuning applied to Random Forest and XGBoost, Logistic Regression achieved comparable—and sometimes superior—results. This reinforces the principle that **a simple, interpretable model can often outperform more complex alternatives**.
+In conclusion, despite the advanced techniques and hyperparameter tuning applied to Random Forest and XGBoost, Logistic Regression achieved comparable—and sometimes superior—results. This reinforces the principle that **a simple, interpretable model can sometimes outperform more complex alternatives**.
 
-A shap analysis shows that the riskier customers are those with fiber, a short tenure, month-to-month contracts and, interestingly, lower monthly charges
+A shap analysis shows that the riskier customers are those with fiber, a short tenure, month-to-month contracts and high monthly charges
 
 ---
 
