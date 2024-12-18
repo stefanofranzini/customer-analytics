@@ -55,17 +55,23 @@ Download the necessary dataset from kaggle at [telco customer churn](https://www
 ![Churn Probability by Cluster](02-customer-churn-prediction/artifacts/imgs/cluster_churn_probabilities.png)
 
 ---
+## [Customer Lifetime Value](03-customer-lifetime-value-clv)
 
 ## Customer Lifetime Value (CLV)
 
 **Techniques:**  
 - Cohort Analysis  
 - Regression-Based CLV Models  
-- Probabilistic Models (e.g., BG/NBD, Gamma-Gamma)  
-- Monte Carlo Simulations  
+- Survival analysis
 
 **Description:**  
 These projects predict the long-term value of customers and help prioritize customer retention strategies.
+
+Download the necessary dataset from kaggle at [telco customer churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn).
+
+![LTV distribution](03-customer-lifetime-value-clv/artifacts/imgs/predicted_LTV.png)
+![LTV segment by Cluster](03-customer-lifetime-value-clv/artifacts/imgs/LTV_clusters_recap.png)
+
 
 ---
 

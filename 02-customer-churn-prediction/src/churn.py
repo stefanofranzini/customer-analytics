@@ -311,6 +311,8 @@ plt.savefig('artifacts/imgs/cluster_churn_probabilities.png', transparent=True)
 plt.show()
 
 
+features.to_csv('data/processed/telco_clusters.csv', sep=',', index=False)
+
 # ---
 # ---
 # 
