@@ -75,16 +75,16 @@ Download the necessary dataset from kaggle at [telco customer churn](https://www
 
 ---
 
-## Recommendation Systems
+## [Recommendation System](04-recommendation-systems)
 
 **Techniques:**  
 - Collaborative Filtering (User-User, Item-Item)  
-- Matrix Factorization (SVD, ALS)  
 - Content-Based Filtering  
-- Hybrid Models  
 
 **Description:**  
 These projects provide personalized recommendations to customers using purchase history, product attributes, and hybrid modeling techniques.
+
+Download the necessary dataset from kaggle at [movie recommender system](https://www.kaggle.com/datasets/prajitdatta/movielens-100k-dataset/data).
 
 ---
 
