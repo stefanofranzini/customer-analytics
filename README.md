@@ -103,12 +103,14 @@ Analyze customer reviews, comments, and support tickets to derive actionable ins
 ## Marketing Analytics
 
 **Techniques:**  
-- A/B Testing  
 - Marketing Mix Models (MMM)  
 - Uplift Modeling  
 
 **Description:**  
 Optimize marketing strategies and assess campaign effectiveness with statistical tests and predictive models.
+
+Download the necessary dataset from kaggle at [DT MART: Market Mix Modeling](https://www.kaggle.com/datasets/datatattle/dt-mart-market-mix-modeling).
+
 
 ---
 
